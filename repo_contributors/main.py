@@ -1,4 +1,5 @@
-from src.data_processing import process_repositories
+from src.data_processing import process_repositories, save_data_to_excel
+from app import app  # Importieren Sie die Flask-App-Instanz
 
 if __name__ == '__main__':
     repo_links = [
@@ -9,4 +10,9 @@ if __name__ == '__main__':
 
     repositories_data = process_repositories(repo_links, auth_token)
 
-    # Hier können Sie den Code zum Speichern der Daten in Excel-Dateien hinzufügen
+    # Daten in Excel-Dateien speichern
+    save_data_to_excel(repositories_data)
+
+    # Flask-Anwendung starten
+    app.run(debug=True)
+
