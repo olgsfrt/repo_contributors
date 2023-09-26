@@ -5,6 +5,7 @@ from src.data_processing import process_repositories, save_data_to_excel
 from flask import send_from_directory
 import os
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = RepoForm()
