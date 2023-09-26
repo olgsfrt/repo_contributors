@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Repo Contributors</title>
+    <title>Repository Analyser</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome!</h1>
+    <h1>Enter Repository URL</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.repo_url.label }}<br>
+            {{ form.repo_url(size=80) }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
 </body>
 </html>
+
