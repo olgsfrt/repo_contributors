@@ -1,5 +1,8 @@
 import pandas as pd
 from .github_api import fetch_contributors, enrich_contributor_data
+from app import output_folder  # Importieren Sie output_folder aus __init__.py
+import os
+
 
 def process_repositories(repo_links, auth_token=None):
     all_data = {}
@@ -13,6 +16,13 @@ def process_repositories(repo_links, auth_token=None):
 
         # Save to dictionary
         all_data[repo] = enriched_data
+
+        # Generieren und speichern der Datei im output_folder
+        output_filename = f'contributors_{repo}.xlsx'
+        filepath = os.path.join(output_folder, output_filename)
+        df = pd.DataFrame(enriched_data, columns=["Username", "Contributions", "Profile Link", "Followers Link", "Public Repos", "Followers", "Following", "Public Gists", "Repo Topics", "Location"])
+        df.to_excel(filepath)
+        print(f"Data for {repo} exported to {filepath}")
 
     return all_data
 
