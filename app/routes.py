@@ -15,9 +15,10 @@ def index():
         repositories_data = process_repositories([repo_url])
         save_data_to_excel(repositories_data)
         filename = f"contributors_{repo_url.split('/')[-1]}.xlsx"
-        filepath = os.path.join('data', filename)
+        filepath = os.path.join(output_folder, filename)  # Use output_folder to construct the filepath
         return send_file(filepath, as_attachment=True)
     return render_template('index.html', form=form)
+
 
 @app.route('/download/<filename>')
 def download_file(filename):
