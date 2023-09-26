@@ -1,6 +1,6 @@
 import pandas as pd
 from .github_api import fetch_contributors, enrich_contributor_data
-from app import output_folder  # Importieren Sie output_folder aus __init__.py
+#from app import output_folder  # Importieren Sie output_folder aus __init__.py
 import os
 
 
