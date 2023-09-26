@@ -3,6 +3,7 @@ from app import app
 from app.forms import RepoForm
 from src.data_processing import process_repositories, save_data_to_excel
 from flask import send_from_directory
+from app import app, output_folder
 import os
 
 
@@ -20,4 +21,4 @@ def index():
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    return send_from_directory(os.path.join(app.root_path, 'data'), filename, as_attachment=True)
+    return send_from_directory(output_folder, filename, as_attachment=True)
